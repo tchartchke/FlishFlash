@@ -22,14 +22,7 @@
 
   <div class="gallery">
     <header>
-    <%= "<a href='/collections/#{@collection.id}/new_card' class='button'>Add Card</a>" if signed_in? && current_user == @collection.user %>
-      <h1></h1>
-      <ul class="tabs">
-        <li><a href="#" data-tag="all" class="button active">All</a></li>
-        <li><a href="#" data-tag="people" class="button">People</a></li>
-        <li><a href="#" data-tag="place" class="button">Places</a></li>
-        <li><a href="#" data-tag="thing" class="button">Things</a></li>
-      </ul>
+    <p><%= "<a href='/collections/#{@collection.id}/new_card' class='button'>Add Card</a>" if signed_in? && current_user == @collection.user %></p>
     </header>
     <div class="content">
 

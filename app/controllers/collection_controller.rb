@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   get '/collections' do
     if signed_in?
       @user = current_user
-      redirect '/user#collections'
+      redirect '/user#galleries'
     else
       redirect '/signin'
     end
@@ -11,6 +11,7 @@ class CollectionsController < ApplicationController
   post '/collections' do
     if signed_in?
       @collection = Collection.new(params[:collection])
+      binding.pry
       @collection.user = current_user
       @collection.save
       redirect "collections/#{@collection.id}"

@@ -16,16 +16,13 @@
       <textarea name="collection[description]" id="description" rows="6"><%= @collection.description %></textarea>
     </div>
     <div class="field">
-      <label for="message">Subject</label>
-      <input type="radio" id="foreign" name="subject" value="foreign">
-      <label for="foreign">Foreign Language</label>
-      <input type="radio" id="math" name="subject" value="math">
-      <label for="math">Math</label>
-      <input type="radio" id="science" name="subject" value="science">
-      <label for="science">Science</label>
-      <input type="radio" id="other" name="subject" value="other">
-      <label for="other">Other</label>
-    </div>
+          <label>Subject</label>
+
+          <% Subject.all.each do |subject| %>
+            <input type="radio" id="<%= subject.id %>" value="<%= subject.id %>" name="collection[subject_id]">
+            <label for="<%= subject.id %>"><%= subject.name %></label>
+          <% end %>
+        </div>
     <ul class="actions">
       <li><input value="Edit Collection" class="button" type="submit"></li>
     </ul>

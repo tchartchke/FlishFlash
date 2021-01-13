@@ -15,3 +15,12 @@ Card.create(front: "ta", back: "him/her", info: "1", collection_id: col2.id)
 
 Card.create(front: "ibuprofen", back: "pain reliever", info: "not to be used with acetemetiphen", collection_id: col3.id)
 Card.create(front: "bacitracin", back: "open wounds", info: "kinda like neosporin", collection_id: col3.id)
+
+
+Subject.create(name: "Art")
+Subject.create(name: "History")
+Subject.create(name: "Language")
+Subject.create(name: "Math")
+Subject.create(name: "Philosphy")
+Subject.create(name: "Science")
+Subject.create(name: "Other")
