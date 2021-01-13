@@ -12,7 +12,7 @@ class CollectionsController < ApplicationController
   end
 
   get '/collections/:id' do
-    @collection = Collection.find_by_id(params[:id])
+    @collection = Collection.find(params[:id])
     erb :'collections/show'
   end
 end
