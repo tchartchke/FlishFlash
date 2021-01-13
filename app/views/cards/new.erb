@@ -42,7 +42,7 @@
             <div class="note">
               <%= "<br>Note: #{card.info}" unless card.info == "" %>
               <div class="align-right">
-                <form action="/cards/<%= card.id %>/delete" method="post">
+                <form action="/card/<%= card.id %>/delete" method="post">
                   <input id="hidden" type="hidden" name="_method" value="delete">
                   <ul class="actions">
                     <li><a href="/card/<%= card.id %>/edit" class="button small">EDIT</a></li>
