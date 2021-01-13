@@ -1,4 +1,13 @@
 class CollectionsController < ApplicationController
+  get '/collections' do
+    if signed_in?
+      @user = current_user
+      redirect '/user#collections'
+    else
+      redirect '/signin'
+    end
+  end
+
   post '/collections' do
     if signed_in?
       @collection = Collection.new(params[:collection])
@@ -8,12 +17,18 @@ class CollectionsController < ApplicationController
     else
       redirect '/signin'
     end
-
-    delete '/collections' do
-
-    end
-    
   end
+
+  delete '/collections/:id' do
+    @collection = Collection.find(params[:id])
+    if signed_in? && current_user == @collection.user
+      @collection.destroy
+      redirect '/collections'
+    else
+      redirect '/signin'
+    end
+  end
+    
 
   get '/collections/:id' do
     @collection = Collection.find(params[:id])

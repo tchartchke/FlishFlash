@@ -9,7 +9,8 @@
       <h1>Welcome back, <%= @user.username %>!</h1>
     </header>
     <div class="inner">
-    <h3>Create a new Collection</h3>
+    
+      <h3>Create a new Collection</h3>
       <form action="/collections" method="post">
         <div class="field half first">
           <label for="name">Name</label>
@@ -29,13 +30,17 @@
           <label for="science">Science</label>
           <input type="radio" id="other" name="subject" value="other">
           <label for="other">Other</label>
-				</div>
+        </div>
         <ul class="actions">
           <li><input value="Create new Collection" class="button" type="submit"></li>
         </ul>
       </form>
-     </div>
+    </div>
+  </div>
+</section>
 
+<section id="collections">
+  <div class="inner">
     <h2>Collections</h2>
     <section class="columns double">
     <% @user.collections.each do |collection| %>
@@ -50,9 +55,6 @@
     </div>
     <% end %>
 
-  </section>
-
-
-
+    </section>
   </div>
 </section>
