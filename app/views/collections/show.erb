@@ -4,3 +4,23 @@
     <p><%= @collection.description %></p>
   </div>
 </section>
+
+<section id="galleries">
+
+  <div class="gallery">
+    <header class="special">
+      <h2>Available Cards</h2>
+    </header>
+
+  <div class="content">
+
+    <% @collection.cards.each do |card| %>
+    <div class="media">
+        <a href="/card/<%= card.id %>" data-poptrox="iframe,600x400"><img src="/images/thumbs/05.jpg" /></a>
+    </div>
+    <% end %>
+    
+  </div>
+  
+  </div>
+</section>

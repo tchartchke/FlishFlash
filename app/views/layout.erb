@@ -17,13 +17,13 @@
 			<!-- Nav -->
 				<nav id="nav">
 					<ul>
+					<% if !signed_in? %>
 						<li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
-						<li><a href="gallery.html"><span class="icon fa-book"></span></a></li>
-						<li><a href="generic.html"><span class="icon fa-file-text-o"></span></a></li>
-						<%= '<li><a href="/signin"><span class="icon fa-sign-in"></span></a></li>' if !signed_in? %>
-						<%= '<li><a href="generic.html"><span class="icon fa-edit"></span></a></li>' if signed_in? %>
-						<%= '<li><a href="/signout"><span class="icon fa-sign-out"></span></a></li>' if signed_in? %>
-						
+						<li><a href="/signin"><span class="icon fa-sign-in"></span></a></li>
+					<% else %>
+						<li><a href="/user" class="active"><span class="icon fa-home"></span></a></li>
+						<li><a href="/signout"><span class="icon fa-sign-out"></span></a></li>
+					<% end %>
 					</ul>
 				</nav>
 
@@ -48,12 +48,12 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/jquery.poptrox.min.js"></script>
+			<script src="/js/jquery.scrolly.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<script src="/js/main.js"></script>
 
 	</body>
 </html>

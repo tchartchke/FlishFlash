@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
     name.downcase.gsub(' ', '-')
   end
   
-  extend Unslug
+  def self.find_by_slug(slug)
+    all.find { |property| property.slug == slug }
+  end
 end 

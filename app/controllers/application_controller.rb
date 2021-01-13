@@ -10,9 +10,18 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get "/" do
-    erb :welcome
+  get '/' do
+    if signed_in?
+      redirect '/user'
+    else
+      erb :welcome
+    end
   end
+
+  not_found do
+    status 404
+    erb :oops
+  end  
   
   helpers do
     def signed_in?

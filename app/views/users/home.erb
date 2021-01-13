@@ -19,6 +19,17 @@
           <label for="description">Description</label>
           <input name="collection[description]" id="description" type="text" placeholder="Chapter 2, lesson 4: Olde English terms with Germanic roots">
         </div>
+        <div class="field">
+          <label for="message">Subject</label>
+          <input type="radio" id="foreign" name="subject" value="foreign">
+          <label for="foreign">Foreign Language</label>
+          <input type="radio" id="math" name="subject" value="math">
+          <label for="math">Math</label>
+          <input type="radio" id="science" name="subject" value="science">
+          <label for="science">Science</label>
+          <input type="radio" id="other" name="subject" value="other">
+          <label for="other">Other</label>
+				</div>
         <ul class="actions">
           <li><input value="Create new Collection" class="button" type="submit"></li>
         </ul>
@@ -29,7 +40,7 @@
     <section class="columns double">
     <% @user.collections.each do |collection| %>
     <div class="column">
-      <a href="/collections/<%= collection.slug %>">
+      <a href="/collections/<%= collection.id %>">
       <span class="image left special"><img src="images/pic02.jpg" alt="" /></span>
       <h3><%= collection.name %></h3></a>
       <p>

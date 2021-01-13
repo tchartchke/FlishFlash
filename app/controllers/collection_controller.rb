@@ -4,15 +4,25 @@ class CollectionsController < ApplicationController
       @collection = Collection.new(params[:collection])
       @collection.user = current_user
       @collection.save
-      redirect 'collections/:slug'
+      redirect "collections/#{@collection.id}"
     else
       redirect '/signin'
     end
     
   end
 
-  get '/collections/:slug' do
-    @collection = Collection.find_by_slug(params[:slug])
+  get '/collections/:id' do
+    @collection = Collection.find_by_id(params[:id])
     erb :'collections/show'
   end
 end
+
+
+
+
+
+
+
+
+
+
