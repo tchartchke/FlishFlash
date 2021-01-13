@@ -1,0 +1,39 @@
+<header id="header">
+  <div>Edit <span>Collection</span></div>
+</header>
+<div class="inner">
+
+  <% if signed_in? && current_user == @collection.user %>
+
+  <form action="/collections/<%= @collection.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <div class="field">
+      <label for="name">Collection Name</label>
+      <input name="collection[name]" id="name" type="text" value="<%= @collection.name %>">
+    </div>
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea name="collection[description]" id="description" rows="6"><%= @collection.description %></textarea>
+    </div>
+    <div class="field">
+      <label for="message">Subject</label>
+      <input type="radio" id="foreign" name="subject" value="foreign">
+      <label for="foreign">Foreign Language</label>
+      <input type="radio" id="math" name="subject" value="math">
+      <label for="math">Math</label>
+      <input type="radio" id="science" name="subject" value="science">
+      <label for="science">Science</label>
+      <input type="radio" id="other" name="subject" value="other">
+      <label for="other">Other</label>
+    </div>
+    <ul class="actions">
+      <li><input value="Edit Collection" class="button" type="submit"></li>
+    </ul>
+  </form>
+  <% else %>
+  <h1>Authorization Denied</h1>
+  <p>Please <a href="/signin">signin</a> to the authorized account to edit collection</p>
+
+  <% end %>
+
+</div>

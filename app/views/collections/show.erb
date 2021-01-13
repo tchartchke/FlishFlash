@@ -2,6 +2,19 @@
   <div class="inner">
     <h1><%= @collection.name %></h1>
     <p><%= @collection.description %></p>
+
+    <% if signed_in? && current_user == @collection.user %>
+
+    <form action="/collections" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <ul class="actions">
+        <li><a href="/collections/<%= @collection.id %>/edit" class="button">Edit</a></li>
+				<li><input value="Delete Collection" class="button alt" type="submit"></li>
+			</ul>
+    </form>
+
+    <% end %>
+
   </div>
 </section>
 

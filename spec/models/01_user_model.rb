@@ -1,6 +1,8 @@
 require 'pry'
-
-describe 'User' do
+def app
+  UsersController
+end
+describe UsersController do
   before do
     @user = User.create(:username => "char", :password => "test")
   end

@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     if params[:user].values.include?("")
       redirect '/signup'
     else
-      @user = User.create({username: params[:username], email: params[:email], password: params[:password]})
+      @user = User.create(params[:user])
       session[:user_id] = @user.id
-      redirect '/users'
+      redirect '/user'
     end
   end
 
