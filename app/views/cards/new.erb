@@ -4,21 +4,23 @@
     <h1>Create New Card</h1>
     <form action="#" method="post">
       <div class="field half first">
-        <label for="name">Front</label>
-        <input name="name" id="name" type="text" placeholder="Name">
+        <label for="front">Front</label>
+        <input name="card[front]" id="front" type="text" placeholder="Quote" style="color:black">
       </div>
       <div class="field half">
-        <label for="email">Back</label>
-        <input name="email" id="email" type="email" placeholder="Email">
+        <label for="back">Back</label>
+        <input name="card[back]" id="back" type="text" placeholder="Actor who said it" style="color:black">
       </div>
       <div class="field">
-        <label for="message">Notes</label>
-        <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+        <label for="info">Notes</label>
+        <textarea name="card[info]" id="info" rows="3" placeholder="opt: Movie or other fun facts" style="color:black"></textarea>
       </div>
       <ul class="actions">
-        <li><input value="Send Message" class="button" type="submit"></li>
+        <li><input value="Create" class="button big" type="submit"></li>
+        <li><a href="/collections/<%= @collection.id %>" class="button big alt">Return to Collection</a></li>
       </ul>
     </form>
+    <%= @msg if @msg %>
   </div>
 </section>
 
@@ -26,7 +28,7 @@
 <section>
   <div class="inner">
     <header>
-      <h1><%= @collection.name.upcase %> cards</h1>
+      <h1><%= @collection.name.upcase %> (<%= @collection.cards.count %> cards)</h1>
     </header>
     <section class="columns double">
       <% @collection.cards.each do |card| %>
