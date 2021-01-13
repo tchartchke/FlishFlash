@@ -1,0 +1,47 @@
+<header id="header">
+  <div>  <span>FlishFlash</span></div>
+</header>
+
+
+<section>
+  <div class="inner">
+    <header>
+      <h1>Welcome back, <%= @user.username %>!</h1>
+    </header>
+    <div class="inner">
+    <h3>Create a new Collection</h3>
+      <form action="#" method="post">
+        <div class="field half first">
+          <label for="front">Name</label>
+          <input name="front" id="front" type="text" placeholder="New Vocab!">
+        </div>
+        <div class="field half">
+          <label for="back">Description</label>
+          <input name="back" id="back" type="text" placeholder="Chapter 2, lesson 4: Olde English terms with Germanic roots">
+        </div>
+        <ul class="actions">
+          <li><input value="Create!" class="button" type="submit"></li>
+        </ul>
+      </form>
+     </div>
+
+    <h2>Collections</h2>
+    <section class="columns double">
+    <% @user.collections.each do |collection| %>
+    <div class="column">
+      <a href="/collections/<%= collection.slug %>">
+      <span class="image left special"><img src="images/pic02.jpg" alt="" /></span>
+      <h3><%= collection.name %></h3></a>
+      <p>
+        Number of cards: <%= collection.cards.count %>
+        <%= collection.description %>
+      </p>
+    </div>
+    <% end %>
+
+  </section>
+
+
+
+  </div>
+</section>

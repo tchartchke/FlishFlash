@@ -1,23 +1,97 @@
-<div class="container">
-  <header><img src="images/corneal-small.png" class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Sinatra Template Default Page</h2>
+<!-- Banner -->
+						<section id="banner">
+							<div class="inner">
+								<h1>This is FlishFlash</h1>
+								<p>Like Flashcards. But just kinda.</a></p>
+                	<%# <label for="name">Name</label> %>
+											<%# <input name="name" id="name" type="text" placeholder="Name"><br> %>
+								<ul class="actions">
+									<li><a href="/signup" class="button alt scrolly big">Sign Up</a></li>
+									<li><a href="/signin" class="button alt scrolly big">Sign In</a></li>
+								</ul>
+							</div>
+						</section>
 
-    <div class="content">
-      <p>Welcome to the Sinatra Template! If you're seeing this page, then everything is working
-      as expected. To get started, delete this file (<code>app/views/welcome.erb)</code> and begin adding
-      your own actions to <code>application_controller.rb</code>. For more information, see the <a href="https://github.com/thebrianemory/corneal">README</a>.</p>
-    </div>
+					<!-- Gallery 
+						<section id="galleries">
 
-    <div class="sidebar">
-      <h3>Environment</h3>
-      <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-      </ul>
-    </div>
+							<!-- Photo Galleries
+								<div class="gallery">
+									<header class="special">
+										<h2>What's New</h2>
+									</header>
+									<div class="content">
+										<div class="media">
+											<a href="../images/fulls/01.jpg"><img src="/images/thumbs/01.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="../images/fulls/05.jpg"><img src="images/thumbs/05.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="../images/fulls/09.jpg"><img src="images/thumbs/09.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="../images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="../images/fulls/06.jpg"><img src="images/thumbs/06.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="images/fulls/10.jpg"><img src="images/thumbs/10.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="images/fulls/03.jpg"><img src="images/thumbs/03.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+										<div class="media">
+											<a href="images/fulls/07.jpg"><img src="images/thumbs/07.jpg" alt="" title="This right here is a caption." /></a>
+										</div>
+									</div>
+									<footer>
+										<a href="gallery.html" class="button big">Full Gallery</a>
+									</footer>
+								</div>
+						</section>  -->
 
-  </div>
-</div>
+					<!-- Contact -->
+						<section id="contact">
+							<!-- Social -->
+								<div class="social column">
+									<h3>About Me</h3>
+								      <p>
+      <% User.all.each do |user| %>
+        <%= user.username %><br>
+        <% user.collections.each do |collection| %>
+          +<%= collection.name %><br>
+          <% collection.cards.each do |card| %>
+            - <%= card.front %>, <%= card.back %> => <%= card.info %><br>
+          <% end %>
+        <% end %>
+        <br><br>
+      <% end %>
+      </p>
+
+								</div> 
+
+							<!-- Form -->
+								<div class="column">
+									<h3>Get in Touch</h3>
+									<form action="#" method="post">
+										<div class="field half first">
+											<label for="name">Name</label>
+											<input name="name" id="name" type="text" placeholder="Name">
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input name="email" id="email" type="email" placeholder="Email">
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+										</div>
+										<ul class="actions">
+											<li><input value="Send Message" class="button" type="submit"></li>
+										</ul>
+									</form>
+								</div>
+
+						</section> 
