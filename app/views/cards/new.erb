@@ -35,17 +35,17 @@
       </header>
       <section class="columns double">
         <% @collection.cards.each do |card| %>
-          <div class="column card">
+          <div id="<%= card.id %>" class="column card">
           <h2><%= card.front %></h2>
           <p>
             <%= card.back %>
             <div class="note">
               <%= "<br>Note: #{card.info}" unless card.info == "" %>
               <div class="align-right">
-                <form action="/card/<%= card.id %>/delete" method="post">
+                <form action="/cards/<%= card.id %>/delete" method="post">
                   <input id="hidden" type="hidden" name="_method" value="delete">
                   <ul class="actions">
-                    <li><a href="#" class="button small">EDIT</a></li>
+                    <li><a href="/card/<%= card.id %>/edit" class="button small">EDIT</a></li>
                     <li><input value="DELETE" class="button small" type="submit"></li>
                   </ul>
                 </form>
@@ -63,7 +63,7 @@
 		<h1>Unauthorized Access</h1>
 		<p>Sorry! You can't make changes to this collection!</a></p>
 		<ul class="actions">
-			<li><a href="/signin" class="button alt scrolly big">Sign In</a></li>
+			<li><a href="/" class="button alt scrolly big">Home</a></li>
 		</ul>
 	</div>
 </section>

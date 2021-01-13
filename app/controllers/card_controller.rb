@@ -26,15 +26,34 @@ class CardsController < ApplicationController
   end
   
   delete '/card/:id/delete' do
-    
     @card = Card.find(params[:id])
     @collection = @card.collection
+
+    @card.destroy if signed_in? && current_user == @collection.user
+    
     redirect "/collections/#{@collection.id}/new_card#cards"
+  end
+
+  get '/card/:id/edit' do
+    @card = Card.find(params[:id])
+    @collection = @card.collection
+    erb :'cards/edit'
   end
 
   get '/card/:id' do
     @card = Card.find(params[:id])
     erb :'cards/show', :layout => :card
+  end
+
+  patch '/card/:id' do
+    @card = Card.find(params[:id])
+    @collection = @card.collection
+    if signed_in? && @collection.user == current_user
+      @card.update(params[:card])
+      redirect "/collections/#{@card.collection.id}/new_card##{@card.id}"
+    else
+      redirect '/'
+    end
   end
 
 end

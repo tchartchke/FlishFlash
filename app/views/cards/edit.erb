@@ -1,0 +1,33 @@
+<header id="header">
+  <div>Edit <span>Card</span></div>
+</header>
+<div class="inner">
+
+  <% if signed_in? && current_user == @collection.user %>
+
+  <form action="/card/<%= @card.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <div class="field half first">
+      <label for="front">Front</label>
+      <input name="card[front]" id="front" type="text" value="<%= @card.front %>" style="color:black">
+    </div>
+    <div class="field half">
+      <label for="back">Back</label>
+      <input name="card[back]" id="back" type="text" value="<%= @card.back %>" style="color:black">
+    </div>
+    <div class="field">
+      <label for="info">Notes</label>
+      <textarea name="card[info]" id="info" rows="3" style="color:black"><%= @card.info %></textarea>
+    </div>
+    <ul class="actions">
+      <li><input value="Edit" class="button big" type="submit"></li>
+      <li><a href="/collections/<%= @collection.id %>/new_card#cards" class="button big">Cancel</a></li>
+    </ul>
+  </form>
+  <% else %>
+  <h1>Authorization Denied</h1>
+  <p>Please <a href="/signin">signin</a> to the authorized account to edit card</p>
+
+  <% end %>
+
+</div>
