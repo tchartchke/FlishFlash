@@ -10,17 +10,17 @@
     </header>
     <div class="inner">
     <h3>Create a new Collection</h3>
-      <form action="#" method="post">
+      <form action="/collections" method="post">
         <div class="field half first">
-          <label for="front">Name</label>
-          <input name="front" id="front" type="text" placeholder="New Vocab!">
+          <label for="name">Name</label>
+          <input name="collection[name]" id="name" type="text" placeholder="New Vocab!">
         </div>
         <div class="field half">
-          <label for="back">Description</label>
-          <input name="back" id="back" type="text" placeholder="Chapter 2, lesson 4: Olde English terms with Germanic roots">
+          <label for="description">Description</label>
+          <input name="collection[description]" id="description" type="text" placeholder="Chapter 2, lesson 4: Olde English terms with Germanic roots">
         </div>
         <ul class="actions">
-          <li><input value="Create!" class="button" type="submit"></li>
+          <li><input value="Create new Collection" class="button" type="submit"></li>
         </ul>
       </form>
      </div>
