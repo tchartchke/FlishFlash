@@ -25,6 +25,12 @@ class CardsController < ApplicationController
     end
   end
   
+  delete '/card/:id/delete' do
+    
+    @card = Card.find(params[:id])
+    @collection = @card.collection
+    redirect "/collections/#{@collection.id}/new_card#cards"
+  end
 
   get '/card/:id' do
     @card = Card.find(params[:id])

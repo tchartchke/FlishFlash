@@ -1,45 +1,71 @@
+<% if signed_in? && @collection.user == current_user%>
+
 <!-- Banner -->
+  <section id="banner">
+    <div class="inner">
+      <h1>Create New Card</h1>
+      <form action="#" method="post">
+        <div class="field half first">
+          <label for="front">Front</label>
+          <input name="card[front]" id="front" type="text" placeholder="Quote" style="color:black">
+        </div>
+        <div class="field half">
+          <label for="back">Back</label>
+          <input name="card[back]" id="back" type="text" placeholder="Actor who said it" style="color:black">
+        </div>
+        <div class="field">
+          <label for="info">Notes</label>
+          <textarea name="card[info]" id="info" rows="3" placeholder="opt: Movie or other fun facts" style="color:black"></textarea>
+        </div>
+        <ul class="actions">
+          <li><input value="Create" class="button big" type="submit"></li>
+          <li><a href="/collections/<%= @collection.id %>" class="button big alt">Return to Collection</a></li>
+        </ul>
+      </form>
+      <%= @msg if @msg %>
+    </div>
+  </section>
+
+  <!-- Section -->
+  <section id="cards">
+    <div class="inner">
+      <header>
+        <h1><%= @collection.name.upcase %> (<%= @collection.cards.count %> cards)</h1>
+        <%= @delete if @delete %>
+      </header>
+      <section class="columns double">
+        <% @collection.cards.each do |card| %>
+          <div class="column card">
+          <h2><%= card.front %></h2>
+          <p>
+            <%= card.back %>
+            <div class="note">
+              <%= "<br>Note: #{card.info}" unless card.info == "" %>
+              <div class="align-right">
+                <form action="/card/<%= card.id %>/delete" method="post">
+                  <input id="hidden" type="hidden" name="_method" value="delete">
+                  <ul class="actions">
+                    <li><a href="#" class="button small">EDIT</a></li>
+                    <li><input value="DELETE" class="button small" type="submit"></li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </p>
+        </div>
+        <% end %>
+      </section>
+    </div>
+  </section>
+<% else %>
 <section id="banner">
-  <div class="inner">
-    <h1>Create New Card</h1>
-    <form action="#" method="post">
-      <div class="field half first">
-        <label for="front">Front</label>
-        <input name="card[front]" id="front" type="text" placeholder="Quote" style="color:black">
-      </div>
-      <div class="field half">
-        <label for="back">Back</label>
-        <input name="card[back]" id="back" type="text" placeholder="Actor who said it" style="color:black">
-      </div>
-      <div class="field">
-        <label for="info">Notes</label>
-        <textarea name="card[info]" id="info" rows="3" placeholder="opt: Movie or other fun facts" style="color:black"></textarea>
-      </div>
-      <ul class="actions">
-        <li><input value="Create" class="button big" type="submit"></li>
-        <li><a href="/collections/<%= @collection.id %>" class="button big alt">Return to Collection</a></li>
-      </ul>
-    </form>
-    <%= @msg if @msg %>
-  </div>
+	<div class="inner">
+		<h1>Unauthorized Access</h1>
+		<p>Sorry! You can't make changes to this collection!</a></p>
+		<ul class="actions">
+			<li><a href="/signin" class="button alt scrolly big">Sign In</a></li>
+		</ul>
+	</div>
 </section>
 
-<!-- Section -->
-<section>
-  <div class="inner">
-    <header>
-      <h1><%= @collection.name.upcase %> (<%= @collection.cards.count %> cards)</h1>
-    </header>
-    <section class="columns double">
-      <% @collection.cards.each do |card| %>
-        <div class="column">
-        <h2><%= card.front %></h2>
-        <p>
-          <%= card.back %><br>
-          Note: <%= card.info %>
-        </p>
-      </div>
-      <% end %>
-    </section>
-  </div>
-</section>
+  <% end %>
