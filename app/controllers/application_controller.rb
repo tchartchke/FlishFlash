@@ -11,11 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    if signed_in?
-      redirect '/user'
-    else
-      erb :welcome
-    end
+    erb :welcome
   end
 
   not_found do

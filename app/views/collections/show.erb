@@ -1,7 +1,12 @@
 <section id="banner">
   <div class="inner">
     <h1><%= @collection.name %></h1>
-    <p><%= @collection.description %></p>
+
+    
+    <p>
+      <%= @collection.description %>
+      <%= "<br>(#{@collection.subject.name})" unless @collection.subject.nil? %>
+    </p>
 
     <% if signed_in? && current_user == @collection.user %>
 

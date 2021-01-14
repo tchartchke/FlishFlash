@@ -11,10 +11,9 @@ class CollectionsController < ApplicationController
   post '/collections' do
     if signed_in?
       @collection = Collection.new(params[:collection])
-      binding.pry
       @collection.user = current_user
       @collection.save
-      redirect "collections/#{@collection.id}"
+      redirect "collections/#{@cgit ollection.id}"
     else
       redirect '/signin'
     end
