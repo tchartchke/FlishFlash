@@ -13,7 +13,7 @@ class CollectionsController < ApplicationController
       @collection = Collection.new(params[:collection])
       @collection.user = current_user
       @collection.save
-      redirect "collections/#{@cgit ollection.id}"
+      redirect "collections/#{@collection.id}"
     else
       redirect '/signin'
     end

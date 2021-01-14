@@ -10,13 +10,9 @@
 
     <% if signed_in? && current_user == @collection.user %>
 
-    <form action="/collections/<%= @collection.id %>" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <ul class="actions">
-        <li><a href="/collections/<%= @collection.id %>/edit" class="button">Edit</a></li>
-				<li><input value="Delete Collection" class="button alt" type="submit"></li>
-			</ul>
-    </form>
+    <ul class="actions">
+      <li><a href="/collections/<%= @collection.id %>/edit" class="button big">Edit Collection</a></li>
+    </ul>
 
     <% end %>
 
@@ -27,20 +23,26 @@
 
   <div class="gallery">
     <header>
-    <p><%= "<a href='/collections/#{@collection.id}/new_card' class='button'>Add Card</a>" if signed_in? && current_user == @collection.user %></p>
+    <p><%= "<a href='/collections/#{@collection.id}/new_card' class='button'>Add or Edit Cards</a>" if signed_in? && current_user == @collection.user %></p>
     </header>
     <div class="content">
-
       <% @collection.cards.each do |card| %>
       <div class="media all">
-          <a href="/card/<%= card.id %>" data-poptrox="iframe,600x400"><img src="/images/thumbs/05.jpg" alt="" title="<%= card.front %>" /></a>
+        <div class="front">
+          <a href="/card/<%= card.id %>" data-poptrox="iframe,600x400"><div class="cholder"><%= card.front %></div></a>
+        </div>
       </div>
       <% end %>
     </div>
   
   </div>
 </section>
-
-
-
+  <% if signed_in? && current_user == @collection.user %>
+    <header id="header"><br><span>
+      <form action="/collections/<%= @collection.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input value="Delete Collection" class="button alt small" style="color:#7a7a7a" type="submit"></span>
+      </form>
+		</header>
+<% end %>
 
