@@ -35,26 +35,6 @@
     </div>
   </div>
 </section>
-<!--
-<section id="collections">
-  <div class="inner">
-    <h2>Collections</h2>
-    <section class="columns double">
-    <% @user.collections.each do |collection| %>
-    <div class="column">
-      <a href="/collections/<%= collection.id %>">
-      <span class="image left special"><img src="images/pic02.jpg" alt="" /></span>
-      <h3><%= collection.name %></h3></a>
-      <p>
-        Number of cards: <%= collection.cards.count %><br>
-        <%= collection.description %>
-      </p>
-    </div>
-    <% end %>
-
-    </section>
-  </div>
-</section>-->
 
 <!-- Gallery -->
 <section id="galleries">
@@ -67,26 +47,52 @@
           <h1>Collections</h1>
           <ul class="tabs">
             <li><a href="#" data-tag="all" class="button active">All</a></li>
-            <% current_user.subjects.each do |subject| %>
-            <li><a href="#" data-tag="<%= subject.name %>" class="button"><%= subject.name %></a></li>
+            <% current_user.subject_list.each do |subject| %>
+            <li><a href="#" data-tag="<%= subject.name.downcase %>" class="button"><%= subject.name %></a></li>
             <% end %>
           </ul>
         </header>
-            <section class="columns double">
-    <% @user.collections.each do |collection| %>
-    <div class="column">
-      <a href="/collections/<%= collection.id %>">
-      <span class="image left special"><img src="images/pic02.jpg" alt="" /></span></a>
-      <h3><a class="ctitle" href="/collections/<%= collection.id %>"><%= collection.name %></a></h3>
-      <p>
-        Number of cards: <%= collection.cards.count %><br>
-        <%= "Subject: #{collection.subject.name}<br>" unless collection.subject.nil? || collection.subject.name == "" %>
-        <%= collection.description %>
-      </p>
-    </div>
-    <% end %>
 
-    </section>
+
+        <section class="columns double">
+          <% @user.collections.each do |collection| %>
+
+          <div class="media column all <%= collection.subject.name.downcase %>">
+            <a href="/collections/<%= collection.id %>">
+            <span class="image left special"><img src="images/pic02.jpg" alt="" /></span></a>
+            <h3><a class="ctitle" href="/collections/<%= collection.id %>"><%= collection.name %></a></h3>
+            <p>
+              Number of cards: <%= collection.cards.count %><br>
+              <%= "Subject: #{collection.subject.name}<br>" unless collection.subject.nil? || collection.subject.name == "" %>
+              <%= collection.description %>
+            </p>
+          </div>
+
+          <% end %>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 </section>
