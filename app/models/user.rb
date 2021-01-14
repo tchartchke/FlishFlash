@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   def self.find_by_slug(slug)
     all.find { |property| property.slug == slug }
   end
+
+  def subject_list
+    subjects.uniq.sort_by(&:id)
+  end
 end 
