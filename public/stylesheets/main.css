@@ -1631,3 +1631,8 @@
 		.small {
 			font-size: 0.7em;
 		}
+
+		.ctitle {
+			text-decoration: none;
+			color: #19B5FE;
+		}

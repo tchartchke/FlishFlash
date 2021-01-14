@@ -76,8 +76,8 @@
     <% @user.collections.each do |collection| %>
     <div class="column">
       <a href="/collections/<%= collection.id %>">
-      <span class="image left special"><img src="images/pic02.jpg" alt="" /></span>
-      <h3><%= collection.name %></h3></a>
+      <span class="image left special"><img src="images/pic02.jpg" alt="" /></span></a>
+      <h3><a class="ctitle" href="/collections/<%= collection.id %>"><%= collection.name %></a></h3>
       <p>
         Number of cards: <%= collection.cards.count %><br>
         <%= "Subject: #{collection.subject.name}<br>" unless collection.subject.nil? || collection.subject.name == "" %>
