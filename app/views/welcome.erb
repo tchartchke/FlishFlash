@@ -1,7 +1,7 @@
 <!-- Banner -->
 <section id="banner">
 	<div class="inner">
-		<h1>This is FlishFlash</h1>
+		<h1>This is flishFlash</h1>
 		<p>Like Flashcards. But just kinda.</a></p>
 		<ul class="actions">
 			<li><a href="/signup" class="button alt scrolly big">Sign Up</a></li>
@@ -14,26 +14,32 @@
 <section id="contact">
 	<!-- Social -->
 	<div class="social column">
-		<h3>About Me</h3>
+		<h3>What is...?</h3>
 		<p>
-		<% User.all.each do |user| %>
-			<%= user.username %><br>
-			<% user.collections.each do |collection| %>
-				+<%= collection.name %><br>
-				<% collection.cards.each do |card| %>
-					- <%= card.front %>, <%= card.back %> => <%= card.info %><br>
-				<% end %>
-			<% end %>
-			<br><br>
-		<% end %>
+		A flashcard is a card bearing information on both sides, which is intended to be used as an aid in memorization. 
+		Each flashcard bears a question on one side and an answer on the other. Flashcards are often used to memorize vocabulary, historical dates, formulas or any subject matter that can be learned via a question-and-answer format. 
 		</p>
+		<p>
+		With flishFlash you can make a collection of cards for specific subjects and test your learning.
+		</p>
+		<h3>Current features</h3>
+		<ul>
+			<li>Individual Secure Accounts</li>
+			<li>Create Collections with a name, description, and a subject</li>
+			<li>Create cards for each subject</li>
+			<li>Cards have a front, back, as well as extra notes</li>
+			<li>Full control over changes to every card and collection</li>
+			<li>Testing UI for each collection. See the front, and click to see the answer!</li>
+		</ul>
 
 	</div> 
 
 	<!-- Form -->
 	<div class="column">
+		<p style="color:red"><%= @msg if @msg %></p>
 		<h3>Get in Touch</h3>
-		<form action="#" method="post">
+		<p>flishFlash is constantly growing and evolving. Please send a message with any ideas and features that'd make flishFlash a better tool for you!<p>
+		<form action="/" method="post">
 			<div class="field half first">
 				<label for="name">Name</label>
 				<input name="name" id="name" type="text" placeholder="Name">
@@ -44,7 +50,7 @@
 			</div>
 			<div class="field">
 				<label for="message">Message</label>
-				<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+				<textarea name="message" id="message" rows="3" placeholder="Message"></textarea>
 			</div>
 			<ul class="actions">
 				<li><input value="Send Message" class="button" type="submit"></li>

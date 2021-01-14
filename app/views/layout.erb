@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/stylesheets/main.css" />
+		<%= "<style>#banner{background-image: url(../../images/banner/#{@collection.subject.name}.jpg);}</style>" if @collection %>
 	</head>
 	<body>
 		<div class="page-wrap">
@@ -18,11 +19,11 @@
 				<nav id="nav">
 					<ul>
 					<% if !signed_in? %>
-						<li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
-						<li><a href="/signin"><span class="icon fa-sign-in"></span></a></li>
+						<li><a href="/" class="active"><span class="icon fa-home" alt="home"></span></a></li>
+						<li><a href="/signin"><span class="icon fa-sign-in" alt="signin"></span></a></li>
 					<% else %>
-						<li><a href="/user" class="active"><span class="icon fa-home"></span></a></li>
-						<li><a href="/signout"><span class="icon fa-sign-out"></span></a></li>
+						<li><a href="/user" class="active"><span class="icon fa-home" alt="home"></span></a></li>
+						<li><a href="/signout"><span class="icon fa-sign-out" alt="signout"></span></a></li>
 					<% end %>
 					</ul>
 				</nav>
@@ -37,11 +38,9 @@
 
 							<div class="copyright">
               									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://github.com/tchartchke/flishflash" class="icon fa-github"><span class="label">Github</span></a></li>
 									</ul>
-								&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>
+								&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>
 							</div>
 						</footer>
 				</section>

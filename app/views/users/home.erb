@@ -24,7 +24,7 @@
           <label>Subject</label>
 
           <% Subject.all.each do |subject| %>
-            <input type="radio" id="<%= subject.id %>" value="<%= subject.id %>" name="collection[subject_id]">
+            <input type="radio" id="<%= subject.id %>" value="<%= subject.id %>" name="collection[subject_id]" <%= 'checked' if subject.id == 1 %>>
             <label for="<%= subject.id %>"><%= subject.name %></label>
           <% end %>
         </div>
@@ -57,9 +57,9 @@
         <section class="columns double">
           <% @user.collections.each do |collection| %>
 
-          <div class="media column all <%= collection.subject.name.downcase %>">
+          <div class="media column all <%= collection.subject.name.downcase unless collection.subject.nil? %>">
             <a href="/collections/<%= collection.id %>">
-            <span class="image left special"><img src="images/pic02.jpg" alt="" /></span></a>
+            <span class="image left special"><img src="../../images/thumbs/<%= collection.subject.name.downcase %>.jpg" alt="" /></span></a>
             <h3><a class="ctitle" href="/collections/<%= collection.id %>"><%= collection.name %></a></h3>
             <p>
               Number of cards: <%= collection.cards.count %><br>

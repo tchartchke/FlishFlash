@@ -14,6 +14,11 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  post '/' do
+    @msg = "Just kidding this form doesn't actually work. Maybe it'll be an upcoming feature." unless params[:message].nil?
+    erb :welcome
+  end
+
   not_found do
     status 404
     erb :oops
