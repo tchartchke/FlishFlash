@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:user].values.include?("")
-      redirect '/signup'
+      @msg = "Username and password cannot be empty<br>Please try again"
+      erb :'users/signup'
+    elsif User.all.collect(&:username).include?(params[:user][:username])
+      @msg = "'#{params[:user][:username]}' already exists<br>Please use different username"
+      erb :'users/signup'
     else
       @user = User.create(params[:user])
       session[:user_id] = @user.id
@@ -31,7 +35,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/user'
     else
-      redirect '/signin'
+      @msg = 'Invalid Credentials<br>Please try again'
+      erb :'users/signin'
     end
   end
 
