@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_215512) do
+ActiveRecord::Schema.define(version: 2021_01_14_235830) do
 
   create_table "cards", force: :cascade do |t|
     t.string "front"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_215512) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
+    t.string "display_name"
   end
 
   create_table "users", force: :cascade do |t|

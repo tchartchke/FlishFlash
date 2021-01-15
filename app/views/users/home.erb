@@ -48,7 +48,7 @@
           <ul class="tabs">
             <li><a href="#" data-tag="all" class="button active">All</a></li>
             <% current_user.subject_list.each do |subject| %>
-            <li><a href="#" data-tag="<%= subject.name.downcase %>" class="button"><%= subject.name %></a></li>
+            <li><a href="#" data-tag="<%= subject.name %>" class="button"><%= subject.display_name %></a></li>
             <% end %>
           </ul>
         </header>
@@ -57,13 +57,13 @@
         <section class="columns double">
           <% @user.collections.each do |collection| %>
 
-          <div class="media column all <%= collection.subject.name.downcase unless collection.subject.nil? %>">
+          <div class="media column all <%= collection.subject.name unless collection.subject.nil? %>">
             <a href="/collections/<%= collection.id %>">
-            <span class="image left special"><img src="../../images/thumbs/<%= collection.subject.name.downcase %>.jpg" alt="" /></span></a>
+            <span class="image left special"><img src="../../images/banner/thumbs/<%= collection.subject.name %>.jpg" alt="" /></span></a>
             <h3><a class="ctitle" href="/collections/<%= collection.id %>"><%= collection.name %></a></h3>
             <p>
               Number of cards: <%= collection.cards.count %><br>
-              <%= "Subject: #{collection.subject.name}<br>" unless collection.subject.nil? || collection.subject.name == "" %>
+              <%= "Subject: #{collection.subject.display_name}<br>" unless collection.subject.nil? %>
               <%= collection.description %>
             </p>
           </div>
