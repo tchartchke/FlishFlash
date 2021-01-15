@@ -20,12 +20,12 @@
 
           <% Subject.all.each do |subject| %>
             <input type="radio" id="<%= subject.id %>" value="<%= subject.id %>" name="collection[subject_id]" <%='checked' if @collection.subject == subject %>>
-            <label for="<%= subject.id %>"><%= subject.name %></label>
+            <label for="<%= subject.id %>"><%= subject.display_name %></label>
           <% end %>
         </div>
     <ul class="actions">
       <li><input value="Edit Collection" class="button" type="submit"></li>
-      <li><a href="/user" class="button" >Cancel</a></li>
+      <li><a href="/collections/<%= @collection.id %>" class="button" >Cancel</a></li>
     </ul>
   </form>
   <% else %>

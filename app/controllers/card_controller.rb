@@ -12,8 +12,7 @@ class CardsController < ApplicationController
     @msg = nil
     @collection = Collection.find_by_id(params[:id])
     if signed_in? && @collection.user == current_user
-      card = Card.create(params[:card])
-      card.collection = @collection
+      card = @collection.cards.build(params[:card])
       if card.save
         @msg = "New Card added to Collection!"
       else
@@ -37,7 +36,11 @@ class CardsController < ApplicationController
   get '/card/:id/edit' do
     @card = Card.find_by_id(params[:id])
     @collection = @card.collection
-    erb :'cards/edit'
+    if signed_in? && @collection.user == current_user
+      erb :'cards/edit'
+    else
+      redirect '/signin'
+    end
   end
 
   get '/card/:id' do

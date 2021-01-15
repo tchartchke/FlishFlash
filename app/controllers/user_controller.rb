@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   post '/signup' do
     if params[:user].values.include?("")
       @msg = "Username and password cannot be empty<br>Please try again"
-      erb :'users/signup'
-    elsif User.all.collect(&:username).include?(params[:user][:username])
+      erb :'users/signup'    
+    elsif User.find_by_username(params[:user][:username])
       @msg = "'#{params[:user][:username]}' already exists<br>Please use different username"
       erb :'users/signup'
     else
