@@ -25,7 +25,7 @@
 
           <% Subject.all.each do |subject| %>
             <input type="radio" id="<%= subject.id %>" value="<%= subject.id %>" name="collection[subject_id]" <%= 'checked' if subject.id == 1 %>>
-            <label for="<%= subject.id %>"><%= subject.name %></label>
+            <label for="<%= subject.id %>"><%= subject.display_name %></label>
           <% end %>
         </div>
         <ul class="actions">

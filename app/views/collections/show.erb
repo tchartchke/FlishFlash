@@ -5,13 +5,14 @@
     
     <p>
       <%= @collection.description %>
-      <%= "<br>(#{@collection.subject.name})" unless @collection.subject.nil? %>
+      <%= "<br>- #{@collection.subject.display_name} -" unless @collection.subject.nil? %>
     </p>
 
     <% if signed_in? && current_user == @collection.user %>
 
     <ul class="actions">
       <li><a href="/collections/<%= @collection.id %>/edit" class="button big">Edit Collection</a></li>
+      <li><a href="/user" class="button alt big">Return to All Collections</a></li>
     </ul>
 
     <% end %>
