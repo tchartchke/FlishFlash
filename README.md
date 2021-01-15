@@ -20,8 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Issues][issues-shield]][https://github.com/tchartchke/FlishFlash/issues]
-[![MIT License][license-shield]][https://opensource.org/licenses/MIT]
 
 
 
@@ -116,7 +114,7 @@ To get a local copy up and running follow these simple steps.
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>. See `LICENSE` for more information.
 
 
 
