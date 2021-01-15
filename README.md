@@ -61,15 +61,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -80,11 +76,6 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`tchartchke`, `FlishFlash`, `twitter_handle`, `email`, `flishFlash`, `project_description`
-
 
 ### Built With
 
@@ -110,6 +101,11 @@ To get a local copy up and running follow these simple steps.
    bundle install
    ```
 
+<!-- USAGE -->
+## Usage
+
+A simple flashcard app where users can sign into their own accounts to manage multiple collections of flashcards. 
+Flashcards function as real cards with a front and a back to quiz users of the material and can be viewed in a grid.
 
 <!-- LICENSE -->
 ## License
