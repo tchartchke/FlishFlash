@@ -10,7 +10,7 @@ class CardsController < ApplicationController
 
   post '/collections/:id/new_card' do
     @msg = nil
-    @collection = Collection.find(params[:id])
+    @collection = Collection.find_by_id(params[:id])
     if signed_in? && @collection.user == current_user
       card = Card.create(params[:card])
       card.collection = @collection
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
   end
   
   delete '/card/:id/delete' do
-    @card = Card.find(params[:id])
+    @card = Card.find_by_id(params[:id])
     @collection = @card.collection
 
     @card.destroy if signed_in? && current_user == @collection.user
@@ -35,18 +35,18 @@ class CardsController < ApplicationController
   end
 
   get '/card/:id/edit' do
-    @card = Card.find(params[:id])
+    @card = Card.find_by_id(params[:id])
     @collection = @card.collection
     erb :'cards/edit'
   end
 
   get '/card/:id' do
-    @card = Card.find(params[:id])
+    @card = Card.find_by_id(params[:id])
     erb :'cards/show', :layout => :card
   end
 
   patch '/card/:id' do
-    @card = Card.find(params[:id])
+    @card = Card.find_by_id(params[:id])
     @collection = @card.collection
     if signed_in? && @collection.user == current_user
       @card.update(params[:card])

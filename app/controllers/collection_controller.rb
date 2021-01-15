@@ -20,7 +20,7 @@ class CollectionsController < ApplicationController
   end
 
   delete '/collections/:id' do
-    @collection = Collection.find(params[:id])
+    @collection = Collection.find_by_id(params[:id])
     if signed_in? && current_user == @collection.user
       @collection.destroy
       redirect '/collections'
@@ -31,12 +31,16 @@ class CollectionsController < ApplicationController
     
 
   get '/collections/:id' do
-    @collection = Collection.find(params[:id])
-    erb :'collections/show'
+    @collection = Collection.find_by_id(params[:id])
+    if @collection
+      erb :'collections/show'
+    else
+      erb :oops
+    end
   end
 
   patch '/collections/:id' do
-    @collection = Collection.find(params[:id])
+    @collection = Collection.find_by_id(params[:id])
     if signed_in? && current_user == @collection.user
       @collection.update(params[:collection])
       redirect "/collections/#{@collection.id}"
@@ -46,7 +50,7 @@ class CollectionsController < ApplicationController
   end
 
   get '/collections/:id/edit' do
-    @collection = Collection.find(params[:id])
+    @collection = Collection.find_by_id(params[:id])
     erb :'collections/edit'
   end
 
