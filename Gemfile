@@ -16,6 +16,11 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 
+group :production do
+  gem "puma"
+end
+
+
 group :test do
   gem 'rspec'
   gem 'capybara'
