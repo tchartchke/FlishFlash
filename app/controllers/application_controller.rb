@@ -3,6 +3,7 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
 
   configure do
+    enable :logging
     enable :sessions unless test?
     set :session_secret, "supersecretishouldmakethisanenvvariableatsomepoint"
 
@@ -11,6 +12,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    logger.info 'this is logging info'
+    logger.warn 'warning!'
+    logger.error 'SUPER WRONG'
+    puts 'new puts'
     erb :welcome
   end
 
